@@ -19,23 +19,8 @@ export function Todo(){
         })
     }
     
-    
-    // async function addData(){
-    //     setTaskError('');       
-    //     if(taskText !== ''){
-    //         // alert('hii')
-    //         await axios.post(`${uri}/addtask`,{"task":taskText},{
-    //             headers:{
-    //                 'Content-type':'application/json'
-    //             }
-    //         });
 
-    //         await getData()
-    //     } else {
-    //         setTaskError('Enter Your Task First')
-    //     }
-    // }
-
+    // need to debug this function
     async function addData() {
         
         setTaskError('');
@@ -46,7 +31,7 @@ export function Todo(){
                         'Content-type': 'application/json'
                     }
                 })
-                await setTemp(!temp);
+                setTemp(!temp); // figure out why is this not being called
               } catch (error) {
                 console.error('Error adding task:', error);
                 setTaskError('Error adding task. Please try again.'); // Set an error message on failure
