@@ -50,6 +50,18 @@ app.delete('/removetask/:taskid',async (req,res)=>{
     }
 })
 
+app.put('/update/:taskid',async (req,res)=>{
+    try {
+        const taskid = parseInt(req.params.taskid);
+        const client = await MongoClient.connect(uri);
+        const statusValue=await client.db('todo').collection('todo').findOne({id:taskid});
+
+        await client.db('todo').collection('todo').updateOne({id:taskid},{$set:{status:!statusValue.status}})
+        res.sendStatus(200).end();
+    } catch (error) {
+        console.log(error);
+    }
+})
 
 const port=4000;
 app.listen(port,()=>{
